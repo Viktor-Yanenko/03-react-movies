@@ -3,7 +3,7 @@ import css from './App.module.css'
 import SearchBar from "../SearchBar/SearchBar";
 import MovieModal from "../MovieModal/MovieModal";
 import { type Movie } from "../../types/movie";
-import fetchMovies from "../../services/movieServices";
+import fetchMovies from "../../services/movieService";
 import { toast, Toaster } from "react-hot-toast"
 import MovieGrid from "../MovieGrid/MovieGrid";
 import Loader from "../Loader/Loader";

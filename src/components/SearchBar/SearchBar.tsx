@@ -1,6 +1,22 @@
 import css from './SearchBar.module.css'
+import toast from 'react-hot-toast'
 
-export default function SearchBar({ onSubmit }) {
+const notify = () => toast.error('Please enter your search query.');
+
+interface SearchBarProps {
+    onSubmit: (query: string) => void;
+}
+
+export default function SearchBar({ onSubmit }: SearchBarProps) {
+    const handleSubmit = (formData: FormData) => {
+        const query = formData.get('query') as string;
+        if (query === '') {
+            notify();
+            return;
+        }
+        onSubmit(query)
+    }
+
     return (
         <header className={css.header}>
             <div className={css.container}>
@@ -10,10 +26,9 @@ export default function SearchBar({ onSubmit }) {
                     target='_blank'
                     rel='noopener noreferrer'
                 >
-                
                     Powered by TMDB
                 </a>
-                <form className={css.form}>
+                <form className={css.form} action={handleSubmit}>
                     <input
                         className={css.input}
                         type="text"

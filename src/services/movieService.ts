@@ -21,6 +21,5 @@ export default async function fetchMovies(query:string):Promise<Movie[]> {
             Authorization: `Bearer ${TMDB_KEY}`,
         }
     })
-    console.log(response.data);
     return response.data.results;
 }
